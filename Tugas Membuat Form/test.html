@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 6</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #232526, #414345);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Styling untuk elemen header */
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            animation: zoomIn 1s ease-in-out;
+            position: relative;
+            letter-spacing: 2px;
+        }
+
+        /* Animasi Zoom In untuk judul */
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Styling form */
+        form {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            width: 400px;
+            animation: slideUp 1.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animasi Slide Up */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Styling untuk tabel dalam form */
+        table {
+            width: 100%;
+            position: relative;
+        }
+
+        td {
+            padding: 10px 0;
+            color: #fff;
+        }
+
+        /* Input fields */
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            outline: none;
+            transition: all 0.5s ease;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fokus pada input fields */
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(110, 142, 251, 0.6);
+            border-color: #6e8efb;
+        }
+
+        /* Styling untuk input radio dan checkbox */
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.5);
+            transition: transform 0.3s ease;
+        }
+
+        input[type="radio"]:hover,
+        input[type="checkbox"]:hover {
+            transform: scale(2);
+        }
+
+        /* Tombol submit */
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(110, 142, 251, 0.5);
+        }
+
+        /* Efek hover pada tombol submit */
+        input[type="submit"]:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(110, 142, 251, 0.7);
+            background: linear-gradient(135deg, #a777e3, #6e8efb);
+        }
+
+        /* Efek hover pada form */
+        form:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 45px rgba(110, 142, 251, 0.7);
+        }
+
+        /* Judul input */
+        td:first-child {
+            font-weight: bold;
+        }
+
+        /* Penambahan partikel animasi */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particles div {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particleMove 10s infinite ease-in-out;
+        }
+
+        /* Animasi pergerakan partikel */
+        @keyframes particleMove {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150vh) translateX(50vw);
+                opacity: 0;
+            }
+        }
+
+        /* Generating multiple particles */
+        .particles div:nth-child(1) {
+            left: 20%;
+            width: 10px;
+            height: 10px;
+            animation-duration: 8s;
+        }
+
+        .particles div:nth-child(2) {
+            left: 40%;
+            width: 20px;
+            height: 20px;
+            animation-duration: 12s;
+        }
+
+        .particles div:nth-child(3) {
+            left: 60%;
+            width: 15px;
+            height: 15px;
+            animation-duration: 15s;
+        }
+
+        .particles div:nth-child(4) {
+            left: 80%;
+            width: 12px;
+            height: 12px;
+            animation-duration: 10s;
+        }
+
+        .particles div:nth-child(5) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-duration: 20s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Belajar Membuat Formulir</h1>
+    <form action="">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>:</td>
+                <td><input type="text" name="nama"></td>
+            </tr>
+            <tr>
+                <td>NIM</td>
+                <td>:</td>
+                <td><input type="text" name="NIM"></td>
+            </tr>
+            <tr>
+                <td>Tanggal Lahir</td>
+                <td>:</td>
+                <td><input type="date" name="Tgl Lahir"></td>
+            </tr>
+            <tr>
+                <td>Tempat Lahir</td>
+                <td>:</td>
+                <td><input type="text" name="Tmpt Lahir"></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td><input type="text" name="almt"></td>
+            </tr>
+            <tr>
+                <td>Program Studi</td>
+                <td>:</td>
+                <td>
+                    <select name="Prodi">
+                        <option value="PGSD">Pendidikan Guru Sekolah Dasar</option>
+                        <option value="LK">Logistik Kelautan</option>
+                        <option value="PGPAUD">Pendidikan Anak Usia Dini</option>
+                        <option value="PKP">Pendidikan Kelautan dan Perikanan</option>
+                        <option value="SIK">Sistem Informasi Kelautan</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>:</td>
+                <td>
+                    <input type="radio" name="gender" value="Laki-Laki"> Laki-Laki
+                    <input type="radio" name="gender" value="Perempuan"> Perempuan
+                </td>
+            </tr>
+            <tr>
+                <td>Hobi</td>
+                <td>:</td>
+                <td>
+                    <input type="checkbox" name="Hobi" value="Main Musik"> Main Musik<br>
+                    <input type="checkbox" name="Hobi" value="Futsal"> Futsal<br>
+                    <input type="checkbox" name="Hobi" value="Belajar"> Belajar<br>
+                    <input type="checkbox" name="Hobi" value="Berenang"> Berenang<br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
