@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://cdn.wallpaper.tn/large/4K-Music-Studio-Wallpaper-188385.jpg') no-repeat center center/cover; /* Update the image path */
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 2rem;
+            width: 350px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 15px #0ff, 0 0 25px #0ff;
+            animation: fade-in 1.5s ease-in-out;
+        }
+
+        h2 {
+            color: #ff0;
+            font-size: 2rem;
+            text-align: center;
+            text-shadow: 0 0 10px #ff0, 0 0 20px #ff0;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #0ff;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        textarea:focus {
+            box-shadow: 0 0 15px #ff0;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1rem;
+            color: #000;
+            background: #0ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+
+        button:hover {
+            background: #000;
+            color: #0ff;
+            box-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
+            transform: scale(1.05);
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        textarea {
+            resize: none;
+            height: 80px; 
+        }
+    </style>
+</head>
+<body>
+    <form action="/register" method="POST">
+        <h2>Register</h2>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="nim" placeholder="NIM" required>
+        <input type="text" name="major" placeholder="Major" required>
+        <input type="text" name="birth_place_date" placeholder="Place and Date of Birth" required>
+        <textarea name="address" placeholder="Address" required></textarea>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="instrument" placeholder="Musical Instrument" required>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
