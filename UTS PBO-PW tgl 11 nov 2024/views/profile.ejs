@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+</head>
+<body>
+    <h1>Welcome, <%= users.name %>!</h1>
+    <h2>Profile</h2>
+    <p>Email: <%= users.email %></p>
+    <p>Pekerjaan: <%= users.pekerjaan %></p>
+    <p>Address: <%= users.address %></p>
+
+    <h2>Ikan</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Ikan</th>
+                <th>Jenis Ikan</th>
+                <th>Jumlah Ikan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% ikan.forEach((ikan) => { %>
+                <tr>
+                    <td><%= ikan.nama_ikan %></td>
+                    <td><%= ikan.jenis_ikan %></td>
+                    <td><%= ikan.jumlah_ikan %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <h2>Stok</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Ikan</th>
+                <th>Stok Ikan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% stok.forEach((stok) => { %>
+                <tr>
+                    <td><%= stok.nama_ikan %></td>
+                    <td><%= stok.stok_ikan %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
