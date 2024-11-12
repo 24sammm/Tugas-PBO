@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMarine</title>
+    <style>
+     body {
+    font-family: Arial, sans-serif;
+    background-color: #34b196;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #33ee7b;
+    color: #fff;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="submit"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.biota-laut, .terumbu-karang {
+    margin-bottom: 20px;
+}
+
+.biota-laut h2, .terumbu-karang h2 {
+    margin-bottom: 10px;
+}
+
+.biota-laut table, .terumbu-karang table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.biota-laut table th, .terumbu-karang table th {
+    background-color: #33ee7b;
+    color: #fff;
+}
+
+.biota-laut table th, .terumbu-karang table th, .biota-laut table td, .terumbu-karang table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.logout {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logout input[type="submit"] {
+    background-color: #e74c3c;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout input[type="submit"]:hover {
+    background-color: #c0392b;
+}    
+.user-info {
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+}
+</style>
+</head>
+<body>
+    <h1>Profile</h1>
+    <div class="user-info">
+        <h2>User Information</h2>
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>NIM:</strong> <%= user.nim %></p>
+        <p><strong>Major:</strong> <%= user.major %></p>
+        <p><strong>Birth Place and Date:</strong> <%= user.birth_place_date %></p>
+        <p><strong>Address:</strong> <%= user.address %></p>
+    </div>
+
+    <h2>Edit User Information</h2>
+    <form action="/users/update/<%= user.id %>" method="post">
+        <input type="text" name="name" value="<%= user.name %>" placeholder="Name" required>
+        <input type="text" name="email" value="<%= user.email %>" placeholder="Email" required>
+        <input type="text" name="nim" value="<%= user.nim %>" placeholder="NIM" required>
+        <input type="text" name="major" value="<%= user.major %>" placeholder="Major" required>
+        <input type="text" name="birth_place_date" value="<%= user.birth_place_date %>" placeholder="Birth Place and Date" required>
+        <input type="text" name="address" value="<%= user.address %>" placeholder="Address" required>
+        <input type="submit" value="Update User">
+    </form>
+
+    <form action="/users/delete/<%= user.id %>" method="post">
+        <input type="submit" value="Delete User">
+    </form>
+
+    <h2>Add New User</h2>
+    <form action="/users/add" method="post">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="email" placeholder="Email" required>
+        <input type="text" name="nim" placeholder="NIM" required>
+        <input type="text" name="major" placeholder="Major" required>
+        <input type="text" name="birth_place_date" placeholder="Birth Place and Date" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <input type="submit" value="Add User">
+    </form>
+
+    <h2>Biota Laut</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Population</th>
+            <th>Convertation Status</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+        <% biotas.forEach(biota => { %>
+        <tr>
+            <td><%= biota.name %></td>
+            <td><%= biota.species %></td>
+            <td><%= biota.population %></td>
+            <td><%= biota.convertation_status %></td>
+            <td><%= biota.locate %></td>
+            <td>
+                <form action="/biotas/update/<%= biota.id %>" method="post" style="display:inline;">
+                    <input type="submit" value="Edit">
+                </form>
+                <form action="/biotas/delete/<%= biota.id %>" method="post" style="display:inline;">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <h2>Add New Biota</h2>
+    <form action="/biotas/add" method="post">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="species" placeholder="Species" required>
+        <input type="text" name="population" placeholder="Population" required>
+        <input type="text" name="convertation_status" placeholder="Convertation Status" required>
+        <input type="text" name="locate" placeholder="Location" required>
+        <input type="submit" value="Add Biota">
+    </form>
+
+    <h2>Terumbu Karang</h2>
+    <table>
+        <tr>
+            <th>Location</th>
+            <th>Damage Percent</th>
+            <th>Water Condition</th>
+            <th>Actions</th>
+        </tr>
+        <% corals.forEach(coral => { %>
+        <tr>
+            <td><%= coral.locate %></td>
+            <td><%= coral.damage_percent %></td>
+            <td><%= coral.water_condition %></td>
+            <td>
+                <form action="/corals/update/<%= coral.id %>" method="post" style="display:inline;">
+                    <input type="submit" value="Edit">
+                </form>
+                <form action="/corals/delete/<%= coral.id %>" method="post" style="display:inline;">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <h2>Add New Coral</h2>
+    <form action="/corals/add" method="post">
+        <input type="text" name="locate" placeholder="Location" required>
+        <input type="text" name="damage_percent" placeholder="Damage Percent" required>
+        <input type="text" name="water_condition" placeholder="Water Condition" required>
+        <input type="submit" value="Add Coral">
+    </form>
+
+    <form action="/logout" method="get">
+        <input type="submit" value="Logout">
+    </form>
+</body>
+</html>
