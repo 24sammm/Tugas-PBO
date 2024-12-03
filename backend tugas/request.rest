@@ -1,0 +1,52 @@
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Admin Samuel",
+    "email": "admin@gmail.com",
+    "password": "123456",
+    "confPassword": "123456",
+    "role": "admin"
+} 
+
+###
+// get all Users
+GET http://localhost:5000/users
+
+###
+//Get single user
+GET http://localhost:5000/users/820cfd86-c78b-47d3-a66b-b2a08e3e6e59
+
+###
+// update user
+PATCH  http://localhost:5000/users/820cfd86-c78b-47d3-a66b-b2a08e3e6e59
+Content-Type: application/json
+
+{
+    "name": "Samuel Updated ",
+    "email": "samuel@gmail.com",
+    "password": "",
+    "confPassword": "",
+    "role": "user"
+} 
+
+###
+// delete user
+DELETE http://localhost:5000/users/820cfd86-c78b-47d3-a66b-b2a08e3e6e59
+
+
+###
+//login user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "123456"
+} 
+
+###
+GET http://localhost:5000/me
+
+###
+DELETE http://localhost:5000/logout
